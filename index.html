@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Circle Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- LEFT -->
+    <div class="left">
+      <div class="logo"></div>
+
+      <h2 id="formTitle">Log in / Sign Up On Circle</h2>
+
+      <!-- NAME (hidden in login) -->
+      <div id="nameField" style="display:none;">
+        <label>Full Name:</label>
+        <input type="text" placeholder="Your name">
+      </div>
+
+      <label>Email Address:</label>
+      <input type="email" placeholder="abc@xyz.com">
+
+      <label>Password:</label>
+      <input type="password" id="password" placeholder="********">
+
+      <div class="row">
+        <label>
+          <input type="checkbox" id="showPassword">
+          Show password
+        </label>
+        <a href="#" id="forgot">Forgot password?</a>
+      </div>
+
+      <button class="login-btn" id="mainBtn">Log in</button>
+
+      <p class="or">or connect with</p>
+
+      <div class="social">
+        <span>f</span>
+        <span>G</span>
+      </div>
+
+      <p class="signup">
+        <span id="switchText">Don't have an account?</span>
+        <a href="#" class="signup-link" id="switchLink">Sign up</a>
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="circle">
+        <h1>Circle</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing industry.</p>
+        <button class="learn">Learn More ▶</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ✅ JavaScript -->
+  <script>
+    const passwordInput = document.getElementById("password");
+    const showPassword = document.getElementById("showPassword");
+
+    const switchLink = document.getElementById("switchLink");
+    const switchText = document.getElementById("switchText");
+    const formTitle = document.getElementById("formTitle");
+    const mainBtn = document.getElementById("mainBtn");
+    const nameField = document.getElementById("nameField");
+    const forgot = document.getElementById("forgot");
+
+    let isSignup = false;
+
+    // Show / Hide password
+    showPassword.addEventListener("change", function () {
+      passwordInput.type = this.checked ? "text" : "password";
+    });
+
+    // Switch Login / Signup
+    switchLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      isSignup = !isSignup;
+
+      if (isSignup) {
+        formTitle.textContent = "Create Your Account";
+        mainBtn.textContent = "Sign up";
+        nameField.style.display = "block";
+        forgot.style.display = "none";
+        switchText.textContent = "Already have an account?";
+        switchLink.textContent = "Log in";
+      } else {
+        formTitle.textContent = "Log in / Sign Up On Circle";
+        mainBtn.textContent = "Log in";
+        nameField.style.display = "none";
+        forgot.style.display = "inline";
+        switchText.textContent = "Don't have an account?";
+        switchLink.textContent = "Sign up";
+      }
+    });
+  </script>
+
+</body>
+</html>
